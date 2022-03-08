@@ -79,3 +79,4 @@ jobs:
           baseNamespace: sre-faas-${{ matrix.functions }}
           baseSubdomain: sre-faas-${{ matrix.functions }}
           basePath: functions/${{ matrix.functions }}
+          deploymentName: sre-faas-${{ matrix.functions }}
