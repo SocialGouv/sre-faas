@@ -67,6 +67,14 @@ jobs:
       matrix:
         functions: ${{ fromJson(needs.init.outputs.functions) }}
     steps:
+      - name: Inject env variables
+        uses: SocialGouv/actions/util-env@v1
+        with:
+          environment: dev
+          rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
+          rancherProjectName: ${{ secrets.RANCHER_PROJECT_NAME }}
+          baseNamespace: sre-faas-${{ matrix.functions }}
+    
       - name: Use autodevops deployment
         uses: SocialGouv/actions/autodevops-helm-deploy@v1
         with:
@@ -76,6 +84,6 @@ jobs:
           rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
           socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
           imageName: sre-faas/${{ matrix.functions }}
-          baseNamespace: sre-faas-${{ matrix.functions }}
-          baseSubdomain: sre-faas-${{ matrix.functions }}
+          baseNamespace: sre-faas-${{ env.NAMESPACE }}
+          baseSubdomain: sre-faas-${{ env.SUBDOMAIN }}
           basePath: functions/${{ matrix.functions }}
