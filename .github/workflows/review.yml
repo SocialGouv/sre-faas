@@ -1,5 +1,4 @@
-# this workflow should build+register all functions with a matrix
-
+# this workflow should deploy seom review env
 name: Review
 
 on:
@@ -14,6 +13,7 @@ concurrency:
   group: review-${{ github.ref }}
 
 jobs:
+  # Todo: only produce matrix for relevant functions
   init:
     runs-on: ubuntu-latest
     name: Prepare
@@ -59,7 +59,7 @@ jobs:
   ## DEPLOPY APPLICATION
   ##############################################################################
   deploy:
-    name: Build & Register functions
+    name: Deploy functions
     runs-on: ubuntu-latest
     needs: [init, register]
     strategy:
