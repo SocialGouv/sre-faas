@@ -9,9 +9,9 @@ Poor man stateless JS/TS functions
 
 ## Generated urls
 
-- dev : https://sre-fass-[func].dev.fabrique.social.gouv.fr
-- preprod : https://sre-fass-[func]-preprod.dev.fabrique.social.gouv.fr
-- prod : https://sre-fass-[func].fabrique.social.gouv.fr
+- dev : https://sre-faas-[func].dev.fabrique.social.gouv.fr
+- preprod : https://sre-faas-[func]-preprod.dev.fabrique.social.gouv.fr
+- prod : https://sre-faas-[func].fabrique.social.gouv.fr
 
 ## Dev
 
