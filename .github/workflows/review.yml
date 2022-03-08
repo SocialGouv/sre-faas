@@ -52,7 +52,7 @@ jobs:
           project: sre-faas
           token: ${{ secrets.GITHUB_TOKEN }}
           imageName: sre-faas/${{ matrix.functions }}
-          buildargs: |
+          dockerbuildargs: |
             FUNCTION=${{ matrix.functions }}
 
       - name: Use autodevops deployment
