@@ -30,7 +30,7 @@ jobs:
         run: |
           FUNCTIONS=$(ls -l functions | awk '/^d/ {print $9}')
           echo $FUNCTIONS
-          echo "::set-output name=functions::$FUNCTIONS"
+          echo "::set-output name=functions::${FUNCTIONS//'%'/'%25'}"
 
   ##############################################################################
   ## BUILD AND REGISTER DOCKER IMAGES
