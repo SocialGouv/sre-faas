@@ -84,6 +84,6 @@ jobs:
           rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
           socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
           imageName: sre-faas/${{ matrix.functions }}
-          baseNamespace: sre-faas-${{ env.NAMESPACE }}
-          baseSubdomain: sre-faas-${{ env.SUBDOMAIN }}
+          baseNamespace: ${{ env.NAMESPACE }}
+          baseSubdomain: ${{ env.SUBDOMAIN }}
           basePath: functions/${{ matrix.functions }}
