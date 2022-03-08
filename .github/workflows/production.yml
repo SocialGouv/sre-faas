@@ -1,0 +1,89 @@
+# this workflow should deploy some production env
+name: Production
+
+on:
+  push:
+    tags:
+      - v*
+
+concurrency:
+  cancel-in-progress: true
+  group: prod-${{ github.ref }}
+
+jobs:
+  # Todo: only produce matrix for relevant functions
+  init:
+    runs-on: ubuntu-latest
+    name: Prepare
+    outputs:
+      functions: ${{ steps.init.outputs.functions }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: init
+        shell: bash
+        run: |
+          FUNCTIONS=$( ls -l functions  | awk '/^d/ {print $9}' | jq --slurp --raw-input 'split("\n")[:-1]' )
+          echo $FUNCTIONS
+          FUNCTIONS="${FUNCTIONS//'%'/'%25'}"
+          FUNCTIONS="${FUNCTIONS//$'\n'/'%0A'}"
+          FUNCTIONS="${FUNCTIONS//$'\r'/'%0D'}"
+          echo "::set-output name=functions::$FUNCTIONS"
+
+  ##############################################################################
+  ## BUILD AND REGISTER DOCKER IMAGES
+  ##############################################################################
+  register:
+    name: Build & Register functions
+    runs-on: ubuntu-latest
+    needs: init
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        functions: ${{ fromJson(needs.init.outputs.functions) }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use autodevops build and register
+        uses: SocialGouv/actions/autodevops-build-register@v1
+        with:
+          environment: "prod"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          imageName: sre-faas/${{ matrix.functions }}
+          dockerbuildargs: |
+            FUNCTION=${{ matrix.functions }}
+
+  ##############################################################################
+  ## DEPLOPY APPLICATION
+  ##############################################################################
+  deploy:
+    name: Deploy functions
+    runs-on: ubuntu-latest
+    needs: [init, register]
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        functions: ${{ fromJson(needs.init.outputs.functions) }}
+    environment:
+      name: production
+    steps:
+      - name: Inject env variables
+        uses: SocialGouv/actions/util-env@v1
+        with:
+          environment: prod
+          rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
+          rancherProjectName: ${{ secrets.RANCHER_PROJECT_NAME }}
+          baseNamespace: sre-faas-${{ matrix.functions }}
+
+      - name: Use autodevops deployment
+        uses: SocialGouv/actions/autodevops-helm-deploy@v1
+        with:
+          environment: prod
+          token: ${{ secrets.GITHUB_TOKEN }}
+          kubeconfig: ${{ secrets.KUBECONFIG }}
+          rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
+          socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
+          imageName: sre-faas/${{ matrix.functions }}
+          baseNamespace: sre-faas-${{ env.NAMESPACE }}
+          baseSubdomain: sre-faas-${{ env.SUBDOMAIN }}
+          basePath: functions/${{ matrix.functions }}
