@@ -1,0 +1,23 @@
+# this workflow should do a single release for all packages
+
+name: Release
+
+on:
+  push:
+    branches-ignore:
+      - master
+    tags-ignore:
+      - v*
+
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    name: Release
+    outputs:
+      functions: ${{ steps.init3.outputs.functions }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: init3
+        shell: bash
+        run: |
+          echo "::set-output name=functions::$(ls -l functions | awk '/^d/ {print $9}')"

@@ -1,0 +1,13 @@
+{
+  "name": "@socialgouv/sre-faas-hello",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "node server",
+    "test": "exit 0"
+  },
+  "dependencies": {
+    "micri": "^4.5.0"
+  }
+}
