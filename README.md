@@ -1,8 +1,10 @@
 # sre-faas
 
-Stateless JS/TS functions
+Poor man stateless JS/TS functions
 
-- Each function generate its own docker registry image from the shared Dockerfile
+## Features
+
+- Each function generate its own docker registry image from the main Dockerfile
 - Autoscale is 1-to-many with a [Kubernetes HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
 
 ## Generated urls
@@ -15,7 +17,7 @@ Stateless JS/TS functions
 
 ### Docker
 
-Build some image with `docker build --build-arg FUNCTION=some-func .`
+Build your image with `docker build --build-arg FUNCTION=some-func .`
 
 ## Todo
 

@@ -3,6 +3,7 @@
 name: Test
 
 on:
+  workflow_dispatch:
   push:
     branches-ignore:
       - master
@@ -12,12 +13,35 @@ on:
 jobs:
   init:
     runs-on: ubuntu-latest
-    name: Test
+    name: Prepare
     outputs:
-      functions: ${{ steps.init2.outputs.functions }}
+      functions: ${{ steps.init.outputs.functions }}
     steps:
       - uses: actions/checkout@v2
-      - id: init2
+      - id: init
         shell: bash
         run: |
-          echo "::set-output name=functions::$(ls -l functions | awk '/^d/ {print $9}')"
+          FUNCTIONS=$(ls -l functions | awk '/^d/ {print $9}')
+          echo $FUNCTIONS
+          echo "::set-output name=functions::$FUNCTIONS"
+
+  ##############################################################################
+  ## BUILD AND REGISTER DOCKER IMAGES
+  ##############################################################################
+  register:
+    name: Build & Register functions
+    runs-on: ubuntu-latest
+    needs: init
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        functions: ${{ fromJson(needs.init.outputs.functions) }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test ${{ matrix.functions }}
+        shell: bash
+        run: |
+          cd functions/${{ matrix.functions }}
+          yarn
+          yarn test

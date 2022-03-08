@@ -7,5 +7,5 @@ const func = require("./function");
 const server = serve(func);
 
 server.listen(PORT, () => {
-  console.log(`Hello server started on port ${PORT}`);
+  console.log(`BOT server started on port ${PORT}`);
 });
