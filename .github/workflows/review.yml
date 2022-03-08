@@ -1,9 +1,5 @@
 # this workflow should build+register all functions with a matrix
 
-# buildarg: FUNCTION=some-func
-# # now deploy each function
-# helm-deploy
-
 name: Review
 
 on:
