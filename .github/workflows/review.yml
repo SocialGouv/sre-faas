@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: init
-        uses: .github/actions/list-functions
+        uses: ./.github/actions/list-functions
 
   ##############################################################################
   ## BUILD AND REGISTER DOCKER IMAGES
