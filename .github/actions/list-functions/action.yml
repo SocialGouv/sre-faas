@@ -1,0 +1,21 @@
+name: List functions
+description: List functions in the repo
+
+outputs:
+  functions:
+    description: The list of functions as a JSON string
+    value: ${{ steps.list-functions.outputs.functions }}
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Node.js
+      id: list-functions
+      shell: bash
+      run: |
+        FUNCTIONS=$( ls -l functions  | awk '/^d/ {print $9}' | jq --slurp --raw-input 'split("\n")[:-1]' )
+        echo $FUNCTIONS
+        FUNCTIONS="${FUNCTIONS//'%'/'%25'}"
+        FUNCTIONS="${FUNCTIONS//$'\n'/'%0A'}"
+        FUNCTIONS="${FUNCTIONS//$'\r'/'%0D'}"
+        echo "::set-output name=functions::$FUNCTIONS"

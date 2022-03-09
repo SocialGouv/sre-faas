@@ -22,14 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: init
-        shell: bash
-        run: |
-          FUNCTIONS=$( ls -l functions  | awk '/^d/ {print $9}' | jq --slurp --raw-input 'split("\n")[:-1]' )
-          echo $FUNCTIONS
-          FUNCTIONS="${FUNCTIONS//'%'/'%25'}"
-          FUNCTIONS="${FUNCTIONS//$'\n'/'%0A'}"
-          FUNCTIONS="${FUNCTIONS//$'\r'/'%0D'}"
-          echo "::set-output name=functions::$FUNCTIONS"
+        uses: .github/actions/list-functions
 
   ##############################################################################
   ## BUILD AND REGISTER DOCKER IMAGES
