@@ -21,7 +21,6 @@ jobs:
       - uses: actions/checkout@v2
       - id: init
         uses: ./.github/actions/list-functions
-          echo "::set-output name=functions::$FUNCTIONS"
 
   ##############################################################################
   ## BUILD AND REGISTER DOCKER IMAGES
