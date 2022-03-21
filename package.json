@@ -1,1 +1,6 @@
-
+{
+  "name": "@socialgouv/sre-faas",
+  "version": "0.0.0",
+  "private": true
+}
+  
