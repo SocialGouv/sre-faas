@@ -2,9 +2,9 @@
 
 Poor man stateless JS/TS functions
 
-## Features
+## How it works
 
-- Each function generate its own docker registry image from the main Dockerfile
+Each function generate its own docker registry image from the main Dockerfile
 
 ## Generated URLs
 
