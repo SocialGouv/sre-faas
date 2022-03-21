@@ -8,7 +8,7 @@ on:
 
 concurrency:
   cancel-in-progress: true
-  group: prod-${{ github.ref }}
+  group: production
 
 jobs:
   # Todo: only produce matrix for relevant functions
