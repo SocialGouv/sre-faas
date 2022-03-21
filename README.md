@@ -22,4 +22,3 @@ Build your image with `docker build --build-arg FUNCTION=some-func .`
 
 - ressources optims + hpa
 - changes based release/deploy
-
