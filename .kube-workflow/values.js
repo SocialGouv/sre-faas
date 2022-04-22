@@ -20,12 +20,6 @@ module.exports = (values) => {
         ? `sre-faas-${name}-preprod.${values.global.domain}`
         : `sre-faas-${name}-${values.global.branchSlug}.${values.global.domain}`,
     };
-    // todo: make it available through some values.yaml
-    if (name === "tipimail-quotas") {
-      apps[`app-${name}`].envFrom = [
-        { secretRef: { name: "tipimail-accounts" } },
-      ];
-    }
   });
 
   return Object.assign(values, {

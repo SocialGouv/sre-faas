@@ -34,7 +34,7 @@ jobs:
       fail-fast: false
       max-parallel: 5
       matrix:
-        functions: ${{ fromJson(needs.init.outputs.functions) }}
+        function: ${{ fromJson(needs.init.outputs.functions) }}
     steps:
       - uses: actions/checkout@v2
       - name: Use autodevops build and register
@@ -42,9 +42,9 @@ jobs:
         with:
           environment: "prod"
           token: ${{ secrets.GITHUB_TOKEN }}
-          imageName: sre-faas/${{ matrix.functions }}
+          imageName: sre-faas/${{ matrix.function }}
           dockerbuildargs: |
-            FUNCTION=${{ matrix.functions }}
+            FUNCTION=${{ matrix.function }}
 
   ##############################################################################
   ## DEPLOPY APPLICATION
@@ -57,7 +57,7 @@ jobs:
       fail-fast: false
       max-parallel: 5
       matrix:
-        functions: ${{ fromJson(needs.init.outputs.functions) }}
+        function: ${{ fromJson(needs.init.outputs.functions) }}
     environment:
       name: production
     steps:
