@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/SocialGouv/sre-faas/compare/v1.2.0...v1.2.1) (2022-04-22)
+
+
+### Bug Fixes
+
+* use chart values ([ab50e65](https://github.com/SocialGouv/sre-faas/commit/ab50e65e6a18c4b4a2feaf59b8b61a809fec02ae))
+
 # [1.2.0](https://github.com/SocialGouv/sre-faas/compare/v1.1.0...v1.2.0) (2022-04-22)
 
 
