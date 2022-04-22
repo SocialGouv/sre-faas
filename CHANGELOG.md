@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/SocialGouv/sre-faas/compare/v1.1.0...v1.2.0) (2022-04-22)
+
+
+### Features
+
+* add tipimail-quotas and upgrade to kube-workflow ([#7](https://github.com/SocialGouv/sre-faas/issues/7)) ([931b7d7](https://github.com/SocialGouv/sre-faas/commit/931b7d71ce75cc82245cf795db4fa0e8205e5ecf))
+
 # [1.1.0](https://github.com/SocialGouv/sre-faas/compare/v1.0.5...v1.1.0) (2022-04-05)
 
 
