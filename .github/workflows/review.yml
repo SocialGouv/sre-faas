@@ -68,5 +68,5 @@ jobs:
           kubeconfig: ${{ secrets.KUBECONFIG }}
           rancherProjectId: ${{ secrets.RANCHER_PROJECT_ID }}
           rancherProjectName: ${{ secrets.RANCHER_PROJECT_NAME }}
-          #cwd: functions/${{ matrix.function }}
           charts: app-${{ matrix.function }}
+          helmArgs: "--set global.namespace=sre-faas-${{ matrix.function }}-${{ github.head_ref || github.ref_name }} "

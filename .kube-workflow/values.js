@@ -8,7 +8,12 @@ module.exports = (values) => {
     .readdirSync(funcsDir)
     .filter((name) => fs.statSync(path.join(funcsDir, name)).isDirectory());
 
-  const apps = {};
+  const apps = {
+    global: {
+      ...values.global,
+      namespace: null,
+    },
+  };
   functionsNames.forEach((name) => {
     apps[`app-${name}`] = {
       namespace: `${values.global.namespace}-${name}`,
