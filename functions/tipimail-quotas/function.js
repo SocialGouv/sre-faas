@@ -1,3 +1,5 @@
+const { send } = require("micri");
+
 const fetch = require("node-fetch");
 const pAll = require("p-all");
 
@@ -25,10 +27,16 @@ const getAccountsCredits = async (accounts) => {
   return metrics.join("\n");
 };
 
+const isValid = (req) => {
+  return req.url.indexOf(`token=${process.env.ACCESS_TOKEN}`) > -1;
+};
+
 module.exports = async (req, res) => {
-  console.log(process.env.TIPIMAIL_ACCOUNTS);
-  const accounts = JSON.parse(process.env.TIPIMAIL_ACCOUNTS);
-  console.log(accounts);
+  if (!isValid(req)) {
+    const data = "nothing here";
+    return send(res, 404, data);
+  }
+  const accounts = JSON.parse(process.env.TIPIMAIL_ACCOUNTS || "[]");
   return getAccountsCredits(accounts);
 };
 
