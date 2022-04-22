@@ -4,8 +4,6 @@ const path = require("path");
 const funcsDir = path.join(__dirname, "../functions");
 
 module.exports = (values) => {
-  console.log("values", values);
-
   const functionsNames = fs
     .readdirSync(funcsDir)
     .filter((name) => fs.statSync(path.join(funcsDir, name)).isDirectory());
