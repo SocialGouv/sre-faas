@@ -30,6 +30,7 @@ const getAccountsCredits = async (accounts) => {
 };
 
 module.exports = async (req, res) => {
+  console.log(process.env.TIPIMAIL_ACCOUNTS);
   const accounts = JSON.parse(process.env.TIPIMAIL_ACCOUNTS);
   console.log(accounts);
   return getAccountsCredits(accounts);
