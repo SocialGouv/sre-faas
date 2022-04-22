@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/SocialGouv/sre-faas/compare/v1.2.2...v1.2.3) (2022-04-22)
+
+
+### Bug Fixes
+
+* healthz ([42e34cc](https://github.com/SocialGouv/sre-faas/commit/42e34cca91171fb75a656da65c062f9901818510))
+
 ## [1.2.2](https://github.com/SocialGouv/sre-faas/compare/v1.2.1...v1.2.2) (2022-04-22)
 
 
