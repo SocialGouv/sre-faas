@@ -70,3 +70,4 @@ jobs:
           rancherProjectName: ${{ secrets.RANCHER_PROJECT_NAME }}
           charts: app-${{ matrix.function }}
           helmArgs: "--set global.namespace=sre-faas-${{ matrix.function }}-${{ github.head_ref || github.ref_name }}"
+          actionName: ${{ matrix.function }}
