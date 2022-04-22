@@ -1,6 +1,6 @@
 # sre-faas
 
-Poor man stateless JS/TS functions
+Poor man stateless JS/TS functions using [kube-workflow](https://github.com/SocialGouv/kube-workflow/) deployments
 
 ## How it works
 
