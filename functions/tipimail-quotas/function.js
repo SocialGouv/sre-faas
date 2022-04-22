@@ -34,7 +34,7 @@ const isValid = (req) => {
 module.exports = async (req, res) => {
   if (!isValid(req)) {
     const data = "nothing here";
-    return send(res, 404, data);
+    return send(res, 200, data);
   }
   const accounts = JSON.parse(process.env.TIPIMAIL_ACCOUNTS || "[]");
   return getAccountsCredits(accounts);
