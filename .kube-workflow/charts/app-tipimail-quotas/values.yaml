@@ -1,4 +1,0 @@
-app-tipimail-quotas:
-  envFrom:
-    - secretRef:
-        name: tipimail-accounts
