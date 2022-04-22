@@ -70,5 +70,7 @@ jobs:
           rancherProjectId: ${{ secrets.RANCHER_PROJECT_ID }}
           rancherProjectName: ${{ secrets.RANCHER_PROJECT_NAME }}
           charts: app-${{ matrix.function }}
-          helmArgs: "--set global.namespace=sre-faas-${{ matrix.function }}"
+          inlineValues: |
+            global:
+              namespace: sre-faas-${{ matrix.function }}
           actionName: ${{ matrix.function }}
