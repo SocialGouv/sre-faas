@@ -32,7 +32,7 @@ jobs:
     needs: init
     strategy:
       fail-fast: false
-      max-parallel: 3
+      max-parallel: 5
       matrix:
         functions: ${{ fromJson(needs.init.outputs.functions) }}
     steps:
@@ -55,22 +55,22 @@ jobs:
     needs: [init, register]
     strategy:
       fail-fast: false
-      max-parallel: 3
+      max-parallel: 5
       matrix:
         functions: ${{ fromJson(needs.init.outputs.functions) }}
     environment:
       name: production
     steps:
       - name: Use autodevops deployment
-        uses: SocialGouv/actions/autodevops-helm-deploy@v1
+        uses: SocialGouv/kube-workflow@v1
         with:
-          environment: prod
+          environment: "prod"
           token: ${{ secrets.GITHUB_TOKEN }}
           kubeconfig: ${{ secrets.KUBECONFIG }}
-          rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
-          socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
-          imageName: sre-faas/${{ matrix.functions }}
-          baseNamespace: sre-faas-${{ matrix.functions }}
-          baseSubdomain: sre-faas-${{ matrix.functions }}
-          basePath: functions/${{ matrix.functions }}
-          deploymentName: sre-faas-${{ matrix.functions }}
+          rancherProjectId: ${{ secrets.RANCHER_PROJECT_ID }}
+          rancherProjectName: ${{ secrets.RANCHER_PROJECT_NAME }}
+          charts: app-${{ matrix.function }}
+          inlineValues: |
+            global:
+              namespace: sre-faas-${{ matrix.function }}
+          actionName: ${{ matrix.function }}
