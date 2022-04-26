@@ -19,12 +19,15 @@ const getAccountsCredits = async (accounts) => {
     ...(await pAll(
       accounts.map((account) => async () => {
         const accountInfo = await getAccountInfo(account);
-        return `tipimail_credits{account="${account.name}"} ${accountInfo.credits}`;
+        if (accountInfo.displayName) {
+          return `tipimail_credits{account="${accountInfo.displayName}"} ${accountInfo.credits} ${accountInfo.creditsSubscription} ${accountInfo.expirationDate}`;
+        }
+        return null;
       }),
       { concurrency: 1 }
     )),
   ];
-  return metrics.join("\n");
+  return metrics.filter(Boolean).join("\n");
 };
 
 const isValid = (req) => {
