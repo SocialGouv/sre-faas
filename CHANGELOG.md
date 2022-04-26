@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/SocialGouv/sre-faas/compare/v1.2.3...v1.2.4) (2022-04-26)
+
+
+### Bug Fixes
+
+* **tipimail-quotas:** add more metrics ([62a3958](https://github.com/SocialGouv/sre-faas/commit/62a39584f007ad3bb49b95377dc146a0df279715))
+
 ## [1.2.3](https://github.com/SocialGouv/sre-faas/compare/v1.2.2...v1.2.3) (2022-04-22)
 
 
