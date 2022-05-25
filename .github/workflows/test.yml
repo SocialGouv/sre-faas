@@ -17,7 +17,7 @@ jobs:
     outputs:
       functions: ${{ steps.init.outputs.functions }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - id: init
         uses: ./.github/actions/list-functions
 
@@ -34,7 +34,7 @@ jobs:
       matrix:
         functions: ${{ fromJson(needs.init.outputs.functions) }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Test ${{ matrix.functions }}
         shell: bash
         run: |

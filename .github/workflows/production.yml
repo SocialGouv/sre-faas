@@ -19,7 +19,7 @@ jobs:
     outputs:
       functions: ${{ steps.init.outputs.functions }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - id: init
         uses: ./.github/actions/list-functions
 
@@ -36,7 +36,7 @@ jobs:
       matrix:
         function: ${{ fromJson(needs.init.outputs.functions) }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Use autodevops build and register
         uses: SocialGouv/actions/autodevops-build-register@v1
         with:
