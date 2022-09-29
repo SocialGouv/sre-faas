@@ -1,3 +1,4 @@
+const fetch = require("node-fetch");
 const { json } = require("micri");
 const queryString = require("query-string");
 
