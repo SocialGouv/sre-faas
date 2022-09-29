@@ -23,7 +23,7 @@ url : ${event.request.url}
 
   const response = {
     response_type: "in_channel",
-    channel: channel || "sentry/alerts",
+    channel: channel || "sentry",
     username: "Sentry",
     // icon_url:
     //  "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/198/freezing-face_1f976.png",
