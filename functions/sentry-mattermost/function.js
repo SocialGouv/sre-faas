@@ -42,6 +42,7 @@ module.exports = async (req) => {
   if (req.method === "POST") {
     const parsed = queryString.parse(req.url.substring(req.url.indexOf("?")));
     const channel = parsed.channel;
+    console.log(`Trigger on channel:${channel}`);
     try {
       const payload = await json(req);
       await forwardSentryEvent(payload, channel);
