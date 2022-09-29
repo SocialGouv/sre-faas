@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/SocialGouv/sre-faas/compare/v1.2.4...v1.3.0) (2022-09-29)
+
+
+### Features
+
+* add sentry-mattermost bridge ([#11](https://github.com/SocialGouv/sre-faas/issues/11)) ([2b6eb18](https://github.com/SocialGouv/sre-faas/commit/2b6eb18c5294511422b4bb80e3120002086a9262))
+
 ## [1.2.4](https://github.com/SocialGouv/sre-faas/compare/v1.2.3...v1.2.4) (2022-04-26)
 
 
