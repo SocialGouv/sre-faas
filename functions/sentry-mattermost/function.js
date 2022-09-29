@@ -45,6 +45,7 @@ module.exports = async (req) => {
     console.log(`Trigger on channel:${channel}`);
     try {
       const payload = await json(req);
+      console.log("payload", payload);
       await forwardSentryEvent(payload, channel);
     } catch (e) {
       console.error(e);
