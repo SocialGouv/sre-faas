@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "micri": "^4.5.0",
-    "node-fetch": "^2",
+    "node-fetch": "^3.0.0",
     "query-string": "^7.1.1"
   }
 }
