@@ -1,3 +1,4 @@
+const { json } = require("micri");
 const MATTERMOST_WEBHOOK_URL = process.env.MATTERMOST_WEBHOOK_URL;
 
 const forwardSentryEvent = (payload) => {
