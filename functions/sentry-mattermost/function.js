@@ -37,7 +37,11 @@ url : ${event.request.url}
 };
 
 module.exports = async (req, res) => {
-  const payload = await json(req);
-  const result = await forwardSentryEvent(payload);
-  return result;
+  try {
+    const payload = await json(req);
+    await forwardSentryEvent(payload);
+  } catch (e) {
+    console.error(e);
+  }
+  return "ok";
 };
