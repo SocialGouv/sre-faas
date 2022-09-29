@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/SocialGouv/sre-faas/compare/v1.3.0...v1.3.1) (2022-09-29)
+
+
+### Bug Fixes
+
+* default mattermost channel ([940c3dd](https://github.com/SocialGouv/sre-faas/commit/940c3ddd12ee3aef1bacbd8252e9921fbd6f3e61))
+
 # [1.3.0](https://github.com/SocialGouv/sre-faas/compare/v1.2.4...v1.3.0) (2022-09-29)
 
 
