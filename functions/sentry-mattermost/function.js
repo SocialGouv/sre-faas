@@ -38,7 +38,7 @@ url : ${event.request.url}
   }).then((r) => r.text());
 };
 
-module.exports = async (req, res) => {
+module.exports = async (req) => {
   if (req.method === "POST") {
     const parsed = queryString.parse(req.url.substring(req.url.indexOf("?")));
     const channel = parsed.channel;
