@@ -4,7 +4,7 @@ const queryString = require("query-string");
 const MATTERMOST_WEBHOOK_URL = process.env.MATTERMOST_WEBHOOK_URL;
 
 const forwardSentryEvent = (payload, channel) => {
-  const event = payload.event.body.data.event;
+  const event = payload.data.event;
   const markdown = `
 :warning: **${event.title}** [${event.environment}]
 
@@ -45,7 +45,6 @@ module.exports = async (req) => {
     console.log(`Trigger on channel:${channel}`);
     try {
       const payload = await json(req);
-      console.log("payload", payload);
       await forwardSentryEvent(payload, channel);
     } catch (e) {
       console.error(e);
