@@ -54,6 +54,7 @@ module.exports = async (req) => {
       await forwardSentryEvent(payload, channel);
     } catch (e) {
       console.error(e);
+      throw e;
     }
   }
   return "ok";
