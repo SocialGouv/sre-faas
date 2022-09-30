@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/SocialGouv/sre-faas/compare/v1.3.2...v1.3.3) (2022-09-30)
+
+
+### Bug Fixes
+
+* **sentry-mattermost:** throw error on exception ([0848d30](https://github.com/SocialGouv/sre-faas/commit/0848d305af624f5dc98890ae51fa1c49c2d1251f))
+
 ## [1.3.2](https://github.com/SocialGouv/sre-faas/compare/v1.3.1...v1.3.2) (2022-09-30)
 
 
