@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/SocialGouv/sre-faas/compare/v1.3.1...v1.3.2) (2022-09-30)
+
+
+### Bug Fixes
+
+* **sentry-mattermost:** prevent excepton when no browser ([38c7412](https://github.com/SocialGouv/sre-faas/commit/38c741247f1a6990de9e86de17acc7bfecdd6b70))
+
 ## [1.3.1](https://github.com/SocialGouv/sre-faas/compare/v1.3.0...v1.3.1) (2022-09-29)
 
 
