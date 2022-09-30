@@ -9,13 +9,18 @@ const forwardSentryEvent = (payload, channel) => {
   const markdown = `
 :warning: **${event.title}** [${event.environment}]
 
-browser : ${event.contexts.browser.name}/${
-    event.contexts.os
-      ? event.contexts.os.name
-      : event.contexts.client_os
-      ? event.contexts.client_os.name
-      : event.contexts.device.model
-  }
+${
+  event.contexts.browser
+    ? `browser : ${event.contexts.browser.name}/${
+        event.contexts.os
+          ? event.contexts.os.name
+          : event.contexts.client_os
+          ? event.contexts.client_os.name
+          : event.contexts.device.model
+      }`
+    : ""
+}
+
 url : ${event.request.url}
 
 [See details in sentry](${event.web_url})
