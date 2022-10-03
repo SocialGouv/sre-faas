@@ -6,7 +6,7 @@ const MATTERMOST_WEBHOOK_URL = process.env.MATTERMOST_WEBHOOK_URL;
 
 const forwardSentryEvent = (payload, channel) => {
   console.log(JSON.stringify(payload));
-  const event = payload.data.event;
+  const event = payload.data ? payload.data.event : payload.event;
   const markdown = `
 :warning: **${event.title}** [${event.environment}]
 
