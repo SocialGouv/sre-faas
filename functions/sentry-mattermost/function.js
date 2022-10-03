@@ -21,7 +21,7 @@ ${
     : ""
 }
 
-url : ${event.request.url}
+${event.request ? `url : ${event.request.url}` : ""}
 
 [See details in sentry](${event.web_url})
 `;
