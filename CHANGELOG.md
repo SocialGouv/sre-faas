@@ -1,3 +1,10 @@
+## [1.3.6](https://github.com/SocialGouv/sre-faas/compare/v1.3.5...v1.3.6) (2022-10-03)
+
+
+### Bug Fixes
+
+* debug ([712b8ff](https://github.com/SocialGouv/sre-faas/commit/712b8ff3bbe3a6ac298178fa5be229953b577efd))
+
 ## [1.3.5](https://github.com/SocialGouv/sre-faas/compare/v1.3.4...v1.3.5) (2022-10-03)
 
 
