@@ -24,7 +24,7 @@ ${
 
 ${event.request ? `url : ${event.request.url}` : ""}
 
-[See details in sentry](${event.web_url})
+[See details in sentry](${event.web_url || payload.url})
 `;
 
   const response = {
