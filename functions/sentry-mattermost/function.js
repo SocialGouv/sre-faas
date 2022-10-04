@@ -11,15 +11,16 @@ const forwardSentryEvent = (payload, channel) => {
 :warning: **${event.title}** [${event.environment}]
 
 ${
-  event.contexts.browser
-    ? `browser : ${event.contexts.browser.name}/${
-        event.contexts.os
-          ? event.contexts.os.name
-          : event.contexts.client_os
-          ? event.contexts.client_os.name
-          : event.contexts.device.model
-      }`
-    : ""
+  (event.contexts &&
+    event.contexts.browser &&
+    `browser : ${event.contexts.browser.name}/${
+      event.contexts.os
+        ? event.contexts.os.name
+        : event.contexts.client_os
+        ? event.contexts.client_os.name
+        : event.contexts.device.model
+    }`) ||
+  ""
 }
 
 ${event.request ? `url : ${event.request.url}` : ""}
