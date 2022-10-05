@@ -8,9 +8,9 @@ const forwardSentryEvent = (payload, channel) => {
   console.log(JSON.stringify(payload));
   const event = payload.data ? payload.data.event : payload.event;
   const markdown = `
-:warning: ${payload.project ? `**${payload.project}**` : ``} **${
-    event.title
-  }** ${event.environment ? `[${event.environment}]` : ``}
+:warning: ${
+    event.extra && event.extra.namespace ? `**${event.extra.namespace}**` : ``
+  } **${event.title}** ${event.environment ? `[${event.environment}]` : ``}
 
 ${payload.culprit || ""}
 
