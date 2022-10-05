@@ -14,8 +14,6 @@ const forwardSentryEvent = (payload, channel) => {
 
 ${payload.culprit || ""}
 
-${payload.message || ""}
-
 ${
   (event.contexts &&
     event.contexts.browser &&
