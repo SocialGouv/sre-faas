@@ -10,7 +10,9 @@ const forwardSentryEvent = (payload, channel) => {
   const markdown = `
 :warning: ${
     event.extra && event.extra.namespace ? `**${event.extra.namespace}**` : ``
-  } **${event.title}** ${event.environment ? `[${event.environment}]` : ``}
+  } **${payload.message || event.title}** ${
+    event.environment ? `[${event.environment}]` : ``
+  }
 
 ${payload.culprit || ""}
 
