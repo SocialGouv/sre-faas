@@ -1,3 +1,10 @@
+## [1.3.12](https://github.com/SocialGouv/sre-faas/compare/v1.3.11...v1.3.12) (2022-10-06)
+
+
+### Bug Fixes
+
+* **sentry-mattermost:** more details ([c26f943](https://github.com/SocialGouv/sre-faas/commit/c26f94322b7d962a8013827307a32b535b1819c0))
+
 ## [1.3.11](https://github.com/SocialGouv/sre-faas/compare/v1.3.10...v1.3.11) (2022-10-05)
 
 
