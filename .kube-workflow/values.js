@@ -19,6 +19,16 @@ module.exports = (values) => {
         : values.global.isPreProd
         ? `sre-faas-${name}-preprod.${values.global.domain}`
         : `sre-faas-${name}-${values.global.branchSlug}.${values.global.domain}`,
+      resources: {
+        requests: {
+          cpu: 0.05,
+          memory: "64Mi"
+        },
+        limits: {
+          cpu: 0.5,
+          memory: "256Mi"
+        },
+      },
     };
   });
 
