@@ -1,3 +1,10 @@
+## [1.3.13](https://github.com/SocialGouv/sre-faas/compare/v1.3.12...v1.3.13) (2022-10-24)
+
+
+### Bug Fixes
+
+* **k8s:** reduce cpu reservation ([fc89f16](https://github.com/SocialGouv/sre-faas/commit/fc89f166b9f126b71adb10273e6f48d8c653e5ba))
+
 ## [1.3.12](https://github.com/SocialGouv/sre-faas/compare/v1.3.11...v1.3.12) (2022-10-06)
 
 
