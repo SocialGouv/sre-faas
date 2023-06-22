@@ -10,6 +10,6 @@
   "dependencies": {
     "micri": "^4.5.0",
     "node-fetch": "^2",
-    "query-string": "^7.1.1"
+    "query-string": "^8.0.0"
   }
 }
